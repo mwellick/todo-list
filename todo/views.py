@@ -10,4 +10,4 @@ def index(request: HttpRequest) -> HttpResponse:
         "task_info": task_list,
         "tag_info": tag_list,
     }
-    return render(request, "", context=context)
+    return render(request, "todo/index.html", context=context)
