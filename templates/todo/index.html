@@ -1,4 +1,33 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 {% block content %}
-  <h1 style="margin-left: 20%">TODO List</h1>
+  <h1 style="margin-left: 20%"><strong>TODO List</strong></h1>
+  <br>
+  <div style="margin-left: 20%">
+    {% for tasks in task_list %}
+
+      <p style="font-size: 20px"><strong>{{ tasks.content }}</strong>
+        {% if tasks.is_done == False %}
+          <span style="color: red"><strong>Not done</strong></span>
+        {% else %}
+          <span style="color: green"><strong>Done</strong></span>
+        {% endif %}
+      </p>
+
+      <p>Created:{{ tasks.created_date }}
+        {% if tasks.deadline %}
+          <span style="color: tomato"><strong>Deadline: {{ tasks.deadline }}</strong></span>
+        {% endif %}
+      </p>
+
+      {% for tag in tasks.tags.all %}
+        <p style="color: grey"><strong>Tags: {{ tag.name }}</strong>
+          <a href="">Update</a>
+          <a href="">Delete</a>
+        </p>
+        <hr>
+      {% endfor %}
+
+    {% endfor %}
+  </div>
+
 {% endblock %}
