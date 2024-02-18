@@ -33,7 +33,7 @@
       {% for tag in tasks.tags.all %}
         <div style="display: flex; align-items: center;">
           <p style="color: grey; margin-right: 10px;"><strong>Tags: {{ tag.name }}</strong>
-            <a href="" style="margin-right: 5px;">Update</a>
+            <a href="{% url 'todo:task-update' pk=tasks.id %}" style="margin-right: 5px;">Update</a>
             <a href="">Delete</a>
           </p>
         </div>
