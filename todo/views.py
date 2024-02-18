@@ -38,3 +38,7 @@ class TaskDeleteView(generic.DeleteView):
     model = Task
     template_name = "todo/task_confirm_delete.html"
     success_url = reverse_lazy("todo:task-list")
+
+class TagListView(generic.ListView):
+    model = Tag
+    template_name = "todo/tag_list.html"

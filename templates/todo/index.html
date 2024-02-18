@@ -4,7 +4,6 @@
     <h1 style="margin-left: 20%"><strong>TODO List</strong></h1>
     <a class="btn btn-primary" style="text-decoration: none; font-size: 1.0rem;" href="{% url 'todo:task-create' %}">Add Task</a>
   </div>
-
   <br>
   <div style="margin-left: 20%">
     {% for tasks in task_list %}
