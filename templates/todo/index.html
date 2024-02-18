@@ -19,9 +19,9 @@
             {% endif %}
           </p>
           {% if tasks.is_done == False %}
-            <a class="btn btn-success" style="text-decoration: none; font-size: 1.0rem;" href="">Complete</a>
+            <a class="btn btn-success" style="text-decoration: none; font-size: 1.0rem;" href="{% url 'todo:toggle-complete-task' pk=tasks.id %}">Complete</a>
           {% else %}
-            <a class="btn btn-secondary" style="text-decoration: none; font-size: 1.0rem;" href="">Undo</a>
+            <a class="btn btn-secondary" style="text-decoration: none; font-size: 1.0rem;" href="{% url 'todo:toggle-complete-task' pk=tasks.id %}">Undo</a>
           {% endif %}
         </div>
 
