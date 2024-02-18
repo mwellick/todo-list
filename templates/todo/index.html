@@ -34,7 +34,7 @@
         <div style="display: flex; align-items: center;">
           <p style="color: grey; margin-right: 10px;"><strong>Tags: {{ tag.name }}</strong>
             <a href="{% url 'todo:task-update' pk=tasks.id %}" style="margin-right: 5px;">Update</a>
-            <a href="">Delete</a>
+            <a href="{% url 'todo:task-delete' pk=tasks.id %}">Delete</a>
           </p>
         </div>
       {% endfor %}
