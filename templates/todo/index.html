@@ -1,33 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1 style="margin-left: 20%"><strong>TODO List</strong></h1>
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1 style="margin-left: 20%"><strong>TODO List</strong></h1>
+    <a class="btn btn-primary" style="text-decoration: none; font-size: 1.0rem;" href="">Add Task</a>
+  </div>
+
   <br>
   <div style="margin-left: 20%">
     {% for tasks in task_list %}
 
-      <p style="font-size: 20px"><strong>{{ tasks.content }}</strong>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <p style="font-size: 20px;"><strong>{{ tasks.content }}</strong>
+          {% if tasks.is_done == False %}
+            <span style="color: red;"><strong>Not done</strong></span>
+          {% else %}
+            <span style="color: green;"><strong>Done</strong></span>
+          {% endif %}
+        </p>
         {% if tasks.is_done == False %}
-          <span style="color: red"><strong>Not done</strong></span>
+          <a class="btn btn-success" style="text-decoration: none; font-size: 1.0rem;" href="">Complete</a>
         {% else %}
-          <span style="color: green"><strong>Done</strong></span>
+          <a class="btn btn-secondary" style="text-decoration: none; font-size: 1.0rem;" href="">Undo</a>
         {% endif %}
-      </p>
+      </div>
 
       <p>Created:{{ tasks.created_date }}
         {% if tasks.deadline %}
-          <span style="color: tomato"><strong>Deadline: {{ tasks.deadline }}</strong></span>
+          <span style="color: tomato;"><strong>Deadline: {{ tasks.deadline }}</strong></span>
         {% endif %}
       </p>
 
       {% for tag in tasks.tags.all %}
-        <p style="color: grey"><strong>Tags: {{ tag.name }}</strong>
-          <a href="">Update</a>
+        <div style="display: flex; align-items: center;">
+          <p style="color: grey; margin-right: 10px;"><strong>Tags: {{ tag.name }}</strong></p>
+          <a href="" style="margin-right: 5px;">Update</a>
           <a href="">Delete</a>
-        </p>
-        <hr>
+        </div>
       {% endfor %}
 
+      <hr>
     {% endfor %}
   </div>
-
 {% endblock %}
