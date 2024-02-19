@@ -19,9 +19,17 @@
             {% endif %}
           </p>
           {% if tasks.is_done == False %}
-            <a class="btn btn-success" style="text-decoration: none; font-size: 1.0rem;" href="{% url 'todo:toggle-complete-task' pk=tasks.id %}">Complete</a>
+            <form method="post" action="{% url 'todo:toggle-complete-task' pk=tasks.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success" style="text-decoration: none; font-size: 1.0rem;">Complete
+              </button>
+            </form>
           {% else %}
-            <a class="btn btn-secondary" style="text-decoration: none; font-size: 1.0rem;" href="{% url 'todo:toggle-complete-task' pk=tasks.id %}">Undo</a>
+            <form method="post" action="{% url 'todo:toggle-complete-task' pk=tasks.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-secondary" style="text-decoration: none; font-size: 1.0rem;">Undo
+              </button>
+            </form>
           {% endif %}
         </div>
 
